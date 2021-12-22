@@ -24,35 +24,6 @@ function getPosition() {
     })
 }
 
-///////////////
-
-
-//////////////////////
-
-// Create the initial InfoWindow.
-let infoWindow = new google.maps.InfoWindow({
-    content: "Click the map to get Lat/Lng!",
-    position: myLatlng,
-});
-
-infoWindow.open(map);
-// Configure the click listener.
-map.addListener("click", (mapsMouseEvent) => {
-    // Close the current InfoWindow.
-    infoWindow.close();
-    // Create a new InfoWindow.
-    infoWindow = new google.maps.InfoWindow({
-        position: mapsMouseEvent.latLng,
-    });
-    infoWindow.setContent(
-        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    );
-    infoWindow.open(map);
-});
-
-
-///////////////////////////
-
 function onAddMarker() {
     console.log('Adding a marker');
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
