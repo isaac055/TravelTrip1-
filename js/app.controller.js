@@ -13,22 +13,23 @@ function onInit() {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
+
+    google.maps.event.addListener(map, 'click', function (event) {
+        console.log('(event.latLng.lat(), event.latLng.lng()): ',(event.latLng.lat(), event.latLng.lng()) ); 
+    })
 }
 
 // This function provides a Promise API to the callback-based-api 
 // of getCurrentPosition
 function getPosition() {
     console.log('Getting Pos');
-    // map.addListener("click", (mapsMouseEvent) => {
-    //     let loc =  mapsMouseEvent.latLng
-    //     console.log('loc: ',loc)
-        
-    // })
-    
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
+
+///////////////
+
 
 //////////////////////
 
