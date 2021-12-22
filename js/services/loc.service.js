@@ -20,11 +20,7 @@ function getLocs() {
     });
 }
 
-function getLocs() {
-    return new Promise((resolve, reject) => {
-        resolve(locs);
-    })
-}
+
 
 function createLoc(name, lat, lng) {
     return {

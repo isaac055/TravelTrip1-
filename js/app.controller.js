@@ -5,9 +5,9 @@ window.onload = onInit;
 window.app = onGetLocs()
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
-window.onGetLocs = onGetLocs;
-window.onAddLoc = onAddLoc;
-window.onDeleteLoc = onDeleteLoc;
+// window.onGetLocs = onGetLocs;
+// window.onAddLoc = onAddLoc;
+// window.onDeleteLoc = onDeleteLoc;
 window.onGetUserPos = onGetUserPos;
 
 function onInit() {
@@ -15,8 +15,7 @@ function onInit() {
         .then(() => {
             console.log('Map is ready');
         })
-        .catch(() => console.log('Error: cannot init map'));
-
+        .catch(() => console.log('Error: cannot init map'))
 }
 
 // This function provides a Promise API to the callback-based-api 
@@ -28,9 +27,9 @@ function getPosition() {
     })
 }
 
-function onAddMarker() {
+function onAddMarker(loc) {
     console.log('Adding a marker');
-    mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+    mapService.addMarker(loc);
 }
 
 

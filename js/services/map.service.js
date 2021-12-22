@@ -3,13 +3,14 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
 }
 
 var gMap;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
+
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
@@ -19,15 +20,27 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
+            gMap.addListener('click', function(event) {
+                addMarker(event.latLng)
+                console.log('event.latLng.lat(), event.latLng.lng(): '
+                ,event.latLng.lat(), event.latLng.lng())
+                
+            })
         })
+
 }
 
 function addMarker(loc) {
+   
+   console.log('loc.lat', loc.lat);
+    
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
         title: 'Hello World!'
     });
+    console.log('marker: ',marker)
+    
     return marker;
 }
 
