@@ -15,13 +15,46 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 }
 
-// This function provides a Promise API to the callback-based-api of getCurrentPosition
+// This function provides a Promise API to the callback-based-api 
+// of getCurrentPosition
 function getPosition() {
     console.log('Getting Pos');
+    // map.addListener("click", (mapsMouseEvent) => {
+    //     let loc =  mapsMouseEvent.latLng
+    //     console.log('loc: ',loc)
+        
+    // })
+    
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
+
+//////////////////////
+
+// Create the initial InfoWindow.
+let infoWindow = new google.maps.InfoWindow({
+content: "Click the map to get Lat/Lng!",
+position: myLatlng,
+});
+
+infoWindow.open(map);
+// Configure the click listener.
+map.addListener("click", (mapsMouseEvent) => {
+// Close the current InfoWindow.
+infoWindow.close();
+// Create a new InfoWindow.
+infoWindow = new google.maps.InfoWindow({
+    position: mapsMouseEvent.latLng,
+});
+infoWindow.setContent(
+    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+);
+infoWindow.open(map);
+});
+
+
+///////////////////////////
 
 function onAddMarker() {
     console.log('Adding a marker');
