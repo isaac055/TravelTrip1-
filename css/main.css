@@ -13,7 +13,9 @@ h1 {
 }
 
 button{
+    border-style:none;
     padding: 2vh;
+    margin: 5px auto;
     border-radius: 10px;
     background-color: rgb(155, 155, 155);
 
