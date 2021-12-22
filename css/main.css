@@ -1,6 +1,61 @@
 *{
     box-sizing: border-box;
 }
-body{
-    background:burlywood;
+html{
+    font-family:'Franklin Gothic Medium';
 }
+body{
+    background:rgb(245, 152, 99);
+}
+h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+button{
+    padding: 2vh;
+    border-radius: 10px;
+    background-color: rgb(155, 155, 155);
+
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgb(202, 196, 196);
+
+}
+
+
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(228, 169, 42);
+}
+
+header input {
+    border-radius: 4px;
+    height: 30px;
+    padding: 0.5em;
+    font-size: 1.2em;
+    border: none;
+    transition: 0.5s;
+}
+header input:focus {
+    background-color: antiquewhite;
+    padding: 0.5em 1em;
+}
+
+header button {
+    border: none;
+    background-color: transparent;
+}
+
+
+
+ /* HELPERS */
+ .flex{
+    display: flex;
+ }
+ .grid{
+    display: flex;
+ }
