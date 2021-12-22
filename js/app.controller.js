@@ -13,10 +13,6 @@ function onInit() {
             console.log('Map is ready');
         })
         .catch(() => console.log('Error: cannot init map'));
-
-    google.maps.event.addListener(map, 'click', function (event) {
-        console.log('(event.latLng.lat(), event.latLng.lng()): ',(event.latLng.lat(), event.latLng.lng()) ); 
-    })
 }
 
 // This function provides a Promise API to the callback-based-api 
@@ -35,23 +31,23 @@ function getPosition() {
 
 // Create the initial InfoWindow.
 let infoWindow = new google.maps.InfoWindow({
-content: "Click the map to get Lat/Lng!",
-position: myLatlng,
+    content: "Click the map to get Lat/Lng!",
+    position: myLatlng,
 });
 
 infoWindow.open(map);
 // Configure the click listener.
 map.addListener("click", (mapsMouseEvent) => {
-// Close the current InfoWindow.
-infoWindow.close();
-// Create a new InfoWindow.
-infoWindow = new google.maps.InfoWindow({
-    position: mapsMouseEvent.latLng,
-});
-infoWindow.setContent(
-    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-);
-infoWindow.open(map);
+    // Close the current InfoWindow.
+    infoWindow.close();
+    // Create a new InfoWindow.
+    infoWindow = new google.maps.InfoWindow({
+        position: mapsMouseEvent.latLng,
+    });
+    infoWindow.setContent(
+        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    );
+    infoWindow.open(map);
 });
 
 
