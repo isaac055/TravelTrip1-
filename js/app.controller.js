@@ -2,9 +2,12 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
 window.onload = onInit;
+window.app = onGetLocs()
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
-window.onGetLocs = onGetLocs;
+// window.onGetLocs = onGetLocs;
+// window.onAddLoc = onAddLoc;
+// window.onDeleteLoc = onDeleteLoc;
 window.onGetUserPos = onGetUserPos;
 window.onGetDesiredLoc = onGetDesiredLoc;
 
@@ -31,11 +34,20 @@ function onAddMarker() {
     mapService.addMarker();
 }
 
+
+
 function onGetLocs() {
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
-            document.querySelector('.locs').innerText = JSON.stringify(locs)
+            document.querySelector('.locations-table').innerHTML = locs.map(loc => {
+                return ` <div class ="loc-card flex">
+      <div class="loc-name"> name: ${loc.name}  </div>
+      <div class="loc-lat"> lat:   ${loc.lat}  </div>
+      <div class="loc-lng"> lng:  ${loc.lng}  </div>            
+</div>
+       `
+            })
         })
 }
 

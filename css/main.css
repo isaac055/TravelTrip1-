@@ -11,6 +11,10 @@ h1 {
     margin: 0;
     font-size: 22px;
 }
+td{
+    padding: 1vh;
+    margin: 5px;
+}
 
 button{
     border-style:none;
@@ -60,4 +64,11 @@ header button {
  }
  .grid{
     display: flex;
+ }
+
+ /* LocS Table */
+ .locations-table{
+     background-color: rgb(30, 80, 100);
+     flex-direction: column;
+     padding: 5px;
  }

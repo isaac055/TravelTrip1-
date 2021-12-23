@@ -1,4 +1,5 @@
 
+import {apiKey} from './services/api.key.js'
 
 export const mapService = {
     initMap,
@@ -49,9 +50,9 @@ function panTo(lat, lng) {
 
 
 function _connectGoogleApi() {
-   
+    console.log('wg',window.google);
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyCoKuRZKzh1SZICQhvXxX-6B9l1t_sR038'; //TODO: Enter your API Key
+    const API_KEY = getApiKey(); //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
@@ -59,7 +60,6 @@ function _connectGoogleApi() {
 
     return new Promise((resolve, reject) => {
         elGoogleApi.onload = resolve;
-        console.log('onload');
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
