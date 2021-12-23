@@ -1,5 +1,5 @@
 
-import {apiKey} from './services/api.key.js'
+import { apiKey } from './api.key.js'
 
 export const mapService = {
     initMap,
@@ -21,24 +21,24 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
-            gMap.addListener('click', function(event) {
+            gMap.addListener('click', function (event) {
                 addMarker(event.latLng)
                 console.log('event.latLng.lat(), event.latLng.lng(): '
-                ,event.latLng.lat(), event.latLng.lng())               
+                    , event.latLng.lat(), event.latLng.lng())
             })
         })
 }
 
-function addMarker(loc) {  
+function addMarker(loc) {
 
-   console.log('loc.lat', loc.lat);
-    
+    console.log('loc.lat', loc.lat);
+
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
         title: 'Hello World!'
     });
-    console.log('marker: ',marker)
+    console.log('marker: ', marker)
     return marker;
 }
 
@@ -50,9 +50,9 @@ function panTo(lat, lng) {
 
 
 function _connectGoogleApi() {
-    console.log('wg',window.google);
+    console.log('wg', window.google);
     if (window.google) return Promise.resolve()
-    const API_KEY = getApiKey(); //TODO: Enter your API Key
+    const API_KEY = apiKey.getApiKey(); //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
